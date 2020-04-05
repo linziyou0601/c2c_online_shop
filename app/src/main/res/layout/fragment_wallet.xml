@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/progress"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="181dp"
+            android:layout_marginTop="399dp"
+            android:layout_marginEnd="182dp"
+            android:layout_marginBottom="399dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        tools:context=".ui.wallet.WalletFragment">
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:scaleType="fitStart"
+            android:src="@drawable/header_profile"
+            android:tint="#2B8F84"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/balanceLayout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="20dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/text1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:text="Your Coins"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:text="$$"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="52sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/balanceButtonLayout1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/balanceLayout">
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/Deposit"
+                style="@style/Widget.MaterialComponents.Button.Icon"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginHorizontal="6dp"
+                android:layout_marginVertical="5dp"
+                android:backgroundTint="#FFFFFF"
+                android:elevation="1dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                app:icon="@drawable/wallet_deposit"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconTint="#BD0C58"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/Withdraw"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginHorizontal="6dp"
+                android:layout_marginVertical="5dp"
+                android:backgroundTint="#FFFFFF"
+                android:elevation="1dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                app:icon="@drawable/wallet_withdraw"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconTint="#2F70BF"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/Update"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginHorizontal="6dp"
+                android:layout_marginVertical="5dp"
+                android:backgroundTint="#FFFFFF"
+                android:elevation="1dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                app:icon="@drawable/wallet_update"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconTint="#CF8B13"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/Detail"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginHorizontal="6dp"
+                android:layout_marginVertical="5dp"
+                android:backgroundTint="#FFFFFF"
+                android:elevation="1dp"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                app:icon="@drawable/wallet_detail"
+                app:iconGravity="textStart"
+                app:iconPadding="0dp"
+                app:iconTint="#448106"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.Circle" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/balanceButtonLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="center_horizontal|center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/balanceButtonLayout1">
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:padding="0dp"
+                android:text="Deposit"
+                android:textAlignment="center"
+                android:textColor="#BD0C58"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:padding="0dp"
+                android:text="Withdraw"
+                android:textAlignment="center"
+                android:textColor="#2F70BF"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:padding="0dp"
+                android:text="Update"
+                android:textAlignment="center"
+                android:textColor="#CF8B13"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="6dp"
+                android:padding="0dp"
+                android:text="Detail"
+                android:textAlignment="center"
+                android:textColor="#448106"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/otherButtonLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="260dp"
+            android:layout_marginBottom="60dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/Orders"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:elevation="2dp"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="My Orders"
+                        android:textColor="#494949"
+                        android:textSize="18sp"
+                        app:icon="@drawable/ic_my_order"
+                        app:iconTint="#494949"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.square" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/Products"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:elevation="2dp"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="My Products"
+                        android:textColor="#494949"
+                        android:textSize="18sp"
+                        app:icon="@drawable/ic_my_product"
+                        app:iconTint="#494949"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.square" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/Profiles"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:elevation="2dp"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="Edit Profiles"
+                        android:textColor="#494949"
+                        android:textSize="18sp"
+                        app:icon="@drawable/ic_edit_profie"
+                        app:iconTint="#494949"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.square" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/Logout"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="80dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#FFFFFF"
+                        android:elevation="2dp"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="Logout"
+                        android:textColor="#494949"
+                        android:textSize="18sp"
+                        app:icon="@drawable/ic_logout"
+                        app:iconTint="#494949"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.MyApp.Button.square" />
+                    </LinearLayout>
+            </ScrollView>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

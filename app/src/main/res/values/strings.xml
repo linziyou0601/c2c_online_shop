@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">c2c_online_shop</string>
+    <string name="title_register">Register</string>
+    <string name="title_login">Login</string>
+    <string name="title_home">Home</string>
+    <string name="title_search">Search</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_wallet">Wallet</string>
+    <string name="title_orders">Orders</string>
+    <string name="title_order">Order</string>
+    <string name="title_products">Products</string>
+    <string name="title_edit_product">Edit Product</string>
+    <string name="title_create_product">Create Product</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_withdraw">Withdraw</string>
+    <string name="title_deposit">Deposit</string>
+    <string name="title_detail">Detail</string>
+</resources>
