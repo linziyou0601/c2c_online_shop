@@ -16,12 +16,14 @@ public class Product {
     private int price;
     private ArrayList<String> imgs = new ArrayList<>();
     private int stockQty;
-    Product(User seller, String title, String description, int price, int stockQty){
+    public Product(User seller, String title, String description, int price, int stockQty){
         this.seller = seller;
         this.title = title;
         this.description = description;
         this.price = price;
         this.stockQty = stockQty;
+        Gson gson = new Gson();
+        new CreateProductTask().execute("https://linziyou.nctu.me:7777/api/c2c_shop/create/product", gson.toJson(this));
     }
     // getter
     public int getId() { return id; }
@@ -58,6 +60,14 @@ public class Product {
         //call to mysql
         Gson gson = new Gson();
         new EditProductTask().execute("https://linziyou.nctu.me:7777/api/c2c_shop/update/product", gson.toJson(this));
+    }
+
+    private static class CreateProductTask extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... params) {
+            HttpURLConnectionUtil.postDataHttpUriConnection(params[0], params[1]);
+            return null;
+        }
     }
 
     private static class EditProductTask extends AsyncTask<String, Void, Void> {

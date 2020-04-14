@@ -8,6 +8,9 @@ import com.example.c2c_online_shop.HttpURLConnectionUtil;
 import com.example.c2c_online_shop.MainActivity;
 import com.google.gson.Gson;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Order {
     private int id;
     private Product product;
@@ -36,7 +39,7 @@ public class Order {
             case 0:
                 break;
             case 1:
-                new NotifyUnshipOrderTask().execute("https://linziyou.nctu.me:7777/api/c2c_shop/select/user?account="+this.product.getSeller().getAccount());
+                this.notifyUnshipOrder();
                 break;
             case 2:
                 break;
@@ -61,8 +64,28 @@ public class Order {
     public void completedOrder(){
         updateStatus();
     }
-    public void sendOrderDetail(){
+    public void sendOrderDetail(){}
+    public void notifyUnpaidOrder(){
+        String detail = this.getProduct().getTitle() + " " + this.getProduct().getPrice() + " × " + this.getQuantity() + " = " + this.getAmount();
 
+        Gson gson = new Gson();
+        Map<String, String> data = new HashMap<>();
+        data.put("userId", Integer.toString(buyer.getId()));
+        data.put("type","Notify Unpaid Order");
+        data.put("title", "Unpaid Order " + this.getProduct().getTitle());
+        data.put("description", detail);
+        new SendNotifyTask().execute("https://linziyou.nctu.me:7777/api/c2c_shop/create/notification", gson.toJson(data));
+    }
+    public void notifyUnshipOrder(){
+        String detail = this.getProduct().getTitle() + " " + this.getProduct().getPrice() + " × " + this.getQuantity() + " = " + this.getAmount();
+
+        Gson gson = new Gson();
+        Map<String, String> data = new HashMap<>();
+        data.put("userId", Integer.toString(this.getProduct().getSeller().getId()));
+        data.put("type","Notify Unship Order");
+        data.put("title", "Unship Order " + this.getProduct().getTitle());
+        data.put("description", detail);
+        new SendNotifyTask().execute("https://linziyou.nctu.me:7777/api/c2c_shop/create/notification", gson.toJson(data));
     }
 
     // AsyncTack
@@ -72,21 +95,6 @@ public class Order {
             HttpURLConnectionUtil.postDataHttpUriConnection(params[0], params[1]);
             return null;
         }
-    }
-    private class NotifyUnshipOrderTask extends AsyncTask<String, Void, String> {
-        @Override
-        protected String doInBackground(String... params) {
-            return HttpURLConnectionUtil.getDataHttpUriConnection(params[0]);
-        }
-        @Override
-        protected void onPostExecute(String result) {
-            processNotifyUnshipOrder(result);
-        }
-    }
-    public void processNotifyUnshipOrder(String json){
-        Gson gson = new Gson();
-        User user = gson.fromJson(json, User.class);
-        user.notifyUnshipOrder(this);
     }
 
     private class ConfirmOrderTask extends AsyncTask<String, Void, String> {
@@ -107,7 +115,7 @@ public class Order {
             Toast.makeText(MainActivity.temp_context, "Order is processing...", Toast.LENGTH_SHORT).show();
             MainActivity.temp_pd.minusStockQty(quantity);
             new CreateOrderTask().execute("https://linziyou.nctu.me:7777/api/c2c_shop/create/order", gson.toJson(this));
-            MainActivity.user.notifyUnpaidOrder(this);
+            this.notifyUnpaidOrder();
         }
         else{
             Toast.makeText(MainActivity.temp_context, "Failed! Product stock quantity insufficient...", Toast.LENGTH_SHORT).show();
@@ -140,6 +148,14 @@ public class Order {
         new DeleteOrderTask().execute("https://linziyou.nctu.me:7777/api/c2c_shop/delete/order", gson.toJson(this));
     }
     private class DeleteOrderTask extends AsyncTask<String, Void, Void> {
+        @Override
+        protected Void doInBackground(String... params) {
+            HttpURLConnectionUtil.postDataHttpUriConnection(params[0], params[1]);
+            return null;
+        }
+    }
+
+    private static class SendNotifyTask extends AsyncTask<String, Void, Void> {
         @Override
         protected Void doInBackground(String... params) {
             HttpURLConnectionUtil.postDataHttpUriConnection(params[0], params[1]);

@@ -20,6 +20,7 @@ import androidx.navigation.Navigation;
 
 import com.example.c2c_online_shop.MainActivity;
 import com.example.c2c_online_shop.R;
+import com.example.c2c_online_shop.model.Product;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -140,7 +141,8 @@ public class CreateProductFragment extends Fragment {
     //--------------------Function--------------------//
     private void createProduct(){
         inProgress();
-        MainActivity.user.createProduct(
+        Product product = new Product(
+                MainActivity.user,
                 createProductViewModel.getTitle().getValue(),
                 createProductViewModel.getDescription().getValue(),
                 Integer.parseInt(createProductViewModel.getPrice().getValue()),
